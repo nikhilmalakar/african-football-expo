@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+<!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.helper.ie8.js"></script><![endif]-->
+
 </head>
 
 <body>
@@ -65,7 +68,7 @@
   <!-- NAVBAR END -->
 
   <!-- HERO SECTION START -->
-  <section class="" style="">
+  <section class="hero">
     
     <div class=" content py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
       <h1 class=" mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-4xl lg:text-5xl"
@@ -93,7 +96,17 @@
   <!-- HERO SECTION END -->
 
   <section class="min-h-screen bg-white">
-
+    
+    <div class="gallery-container">
+      <h1>SPONSORS</h1>
+      <div class="thumbnails"></div>
+      <div class="slides">
+        <div class="sponsor"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s" alt="bata"></div>
+        <div class="sponsor"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s" alt="bata"></div>
+        <div class="sponsor"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s" alt="bata"></div>
+      </div>
+    </div>
+    <!-- or ul.my-slider > li -->
   </section>
 
   <!-- FOOTER START -->
@@ -125,7 +138,42 @@
         All Rights Reserved.</span>
     </div>
   </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+  <script>
+    const slideGallery = document.querySelector('.slides');
+const slides = slideGallery.querySelectorAll('div');
+const thumbnailContainer = document.querySelector('.thumbnails');
+const slideCount = slides.length;
+const slideWidth = 540;
 
+const highlightThumbnail = () => {
+  thumbnailContainer
+    .querySelectorAll('div.highlighted')
+    .forEach(el => el.classList.remove('highlighted'));
+  const index = Math.floor(slideGallery.scrollLeft / slideWidth);
+  thumbnailContainer
+    .querySelector(`div[data-id="${index}"]`)
+    .classList.add('highlighted');
+};
+
+const scrollToElement = el => {
+  const index = parseInt(el.dataset.id, 10);
+  slideGallery.scrollTo(index * slideWidth, 0);
+};
+
+thumbnailContainer.innerHTML += [...slides]
+  .map((slide, i) => `<div data-id="${i}"></div>`)
+  .join('');
+
+thumbnailContainer.querySelectorAll('div').forEach(el => {
+  el.addEventListener('click', () => scrollToElement(el));
+});
+
+slideGallery.addEventListener('scroll', e => highlightThumbnail());
+
+highlightThumbnail();
+  </script>
+<!-- NOTE: prior to v2.2.1 tiny-slider.js need to be in <body> -->
   <!-- FOOTER END -->
 </body>
 
