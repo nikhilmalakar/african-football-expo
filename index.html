@@ -5,6 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
   <link rel="stylesheet" href="./assets/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
 <!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.helper.ie8.js"></script><![endif]-->
@@ -94,18 +98,33 @@
   </section>
 
   <!-- HERO SECTION END -->
-
-  <section class="bg-white pb-20">
-    
-    <div class="gallery-container">
-      <h1 class="afe-gallery-heading" style="padding-top: 40px;">SPONSORS</h1>
-      <div class="slides">
-        <div class="sponsor"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s" alt="bata"></div>
-        <div class="sponsor"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s" alt="bata"></div>
-        <div class="sponsor"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s" alt="bata"></div>
+  <!-- SPONSORS SECTION -->
+  <section id="trending" class="bg-white">
+    <div class="container">
+      <h1 class="afe-gallery-heading" style="padding-bottom: 40px;">SPONSORS</h1>
+      <div class="swiper trending-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide trending-slide">
+            <div class="trending-slide-img">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s" alt="trending" />
+            </div>
+          </div>
+          <div class="swiper-slide trending-slide">
+            <div class="trending-slide-img">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s" alt="trending" />
+            </div>
+          </div>
+          <div class="swiper-slide trending-slide">
+            <div class="trending-slide-img">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s" alt="trending" />
+            </div>
+          </div>
+          <!-- Add more swiper-slide elements as needed -->
+        </div>
+  
+        
       </div>
     </div>
-    <!-- or ul.my-slider > li -->
   </section>
   <!-- events -->
   <section class="events">
@@ -237,8 +256,8 @@
         All Rights Reserved.</span>
     </div>
   </footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
-  <script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script> -->
+  <!-- <script>
     const slideGallery = document.querySelector('.slides');
 const slides = slideGallery.querySelectorAll('div');
 const thumbnailContainer = document.querySelector('.thumbnails');
@@ -272,6 +291,17 @@ slideGallery.addEventListener('scroll', e => highlightThumbnail());
 
 highlightThumbnail();
   </script>
+  <script
+  type="module"
+  src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+></script>
+<script
+  nomodule
+  src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+></script> -->
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script src="assets/js/script.js"></script>
+
 <!-- NOTE: prior to v2.2.1 tiny-slider.js need to be in <body> -->
   <!-- FOOTER END -->
 </body>
