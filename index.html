@@ -5,104 +5,156 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Added jQuery CDN -->
   <link rel="stylesheet" href="./assets/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
-<!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.helper.ie8.js"></script><![endif]-->
+  
+  <!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.helper.ie8.js"></script><![endif]-->
 
 </head>
 
 <body>
-
-  <!-- HERO BG VIDEO -->
-  <div class="video-wrapper">
-    <video id="hero-section-video" playsinline autoplay muted loop >
-      <source src="./assets/videos/hero_section.mp4" type="video/webm">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-
-  <!-- NAVBAR SECTION -->
-  <nav class="border-gray-200 bg-white">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-2">
-      <a href="./index.html" class="flex items-center space-x-3">
-        <img src="./assets/images/afe_logo.svg" class="h-16" alt="Flowbite Logo" />
-        <!-- <span class="self-center text-2xl font-semibold whitespace-nowrap">Flowbite</span> -->
+  <section class="home-hero bg-lucky-point min-h-screen mb-12 xl:mb-26 flex flex-col relative">
+    <div class="hamburger-menu absolute right-10 z-10">
+      <input id="menu__toggle" type="checkbox" />
+      <label class="menu__btn" for="menu__toggle">
+        <span class="menu-span z-10" data-bgColor=""></span>
+      </label>
+  
+      <ul class="menu__box">
+        <li><a class="menu__item" href="#">Home</a></li>
+        <li><a class="menu__item" href="#">About</a></li>
+        <li><a class="menu__item" href="#">Team</a></li>
+        <li><a class="menu__item" href="#">Contact</a></li>
+        <li><a class="menu__item" href="#">Twitter</a></li>
+      </ul>
+    </div>
+    <header id="header" class="header flex items-center pointer-events-none w-full absolute z-10">
+      <a href="" aria-label="Go to home"
+        class="text-white header__logo mr-auto pointer-events-auto" style="color: black;">
+        <img src="/assets/images/afe_logo.png" height="80" width="80">
       </a>
-      <button data-collapse-toggle="navbar-default" type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-        aria-controls="navbar-default" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M1 1h15M1 7h15M1 13h15" />
-        </svg>
-      </button>
-      <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-        <ul
-          class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
-          <li>
-            <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
-              aria-current="page">Home</a>
-          </li>
-          <li>
-            <a href="#"
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">About</a>
-          </li>
-          <li>
-            <a href="#"
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Services</a>
-          </li>
-          <li>
-            <a href="#"
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Pricing</a>
-          </li>
-          <li>
-            <a href="#"
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Contact</a>
-          </li>
-        </ul>
+      <!-- <div class="relative md-max:mr-3 mr-6 xl:mr-8 w-24 h-24">
+        
+        </div> -->
+        <!-- <div class="hero__video-controls flex items-center">
+          <div class="back mr-6 flex items-center justify-center"
+            style="opacity: 0; transform: translateY(60px) translateZ(0px);"><button
+              class="text-white text-white w-full pointer-events-auto" aria-label="Stop video"><span class="inline-svg"
+                style="padding-top:80.95%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 155.88 126.189">
+                  <path fill="currentColor"
+                    d="M155.88 59.595H13.399L68.045 4.949 63.095 0 0 63.095l63.095 63.094 4.95-4.949-54.646-54.645H155.88v-7z">
+                  </path>
+                </svg></span></button></div>
+          <div class="mute flex items-center justify-center"
+            style="opacity: 0; transform: translateY(60px) translateZ(0px);"><button
+              class="text-white text-white w-full pointer-events-auto" aria-label="Mute video"><span class="inline-svg"
+                style="padding-top:96.77%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 171.913 166.366">
+                  <path fill="none" d="M7 52.173v62.02h36.552l50.98 38.185V13.988l-50.98 38.185H7z"></path>
+                  <path fill="currentColor"
+                    d="M101.532 0l-60.31 45.173H0v76.02h41.222l60.31 45.173V0zm-7 152.378l-50.98-38.185H7v-62.02h36.552l50.98-38.185zM151.617 83.575a47.477 47.477 0 0 0-22.7-40.733L125.09 48.7a40.917 40.917 0 0 1 .125 69.685l3.828 5.857a47.539 47.539 0 0 0 22.574-40.667z">
+                  </path>
+                  <path fill="currentColor"
+                    d="M171.913 83.184c0-23.174-13.193-44.759-34.187-56.874l-3.835 5.865c19.043 10.839 31.022 30.229 31.022 51.009 0 20.869-12.087 40.334-31.274 51.145l3.84 5.875c21.14-12.088 34.434-33.756 34.434-57.02zM131.322 83.416a29.731 29.731 0 0 0-11.5-23.6l-3.85 5.89a22.967 22.967 0 0 1-.027 35.449l3.845 5.883a29.744 29.744 0 0 0 11.532-23.622z">
+                  </path>
+                </svg></span></button></div>
+        </div> -->
+      </div><button class="btn pointer-events-auto block menu__toggle header__navItem text-white"
+        aria-label="Open menu"><span class="menu__toggle--open"><span class="inline-svg" style="padding-top:100%"><svg
+              xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 30 30">
+              <path
+                d="M30 0v2.51L2.43 30H0v-2.38L27.71 0H30zM15.99 0L0 15.94v-4.35L11.63 0h4.36zM30 14.55v4.34L18.86 30H14.5L30 14.55z"
+                fill="currentColor"></path>
+            </svg></span></span><span class="menu__toggle--close opacity-0 hidden"><span class="inline-svg"
+            style="padding-top:100%"><svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1"
+              viewBox="0 0 30 30">
+              <defs></defs>
+              <path d="M30 .24v2.58L2.82 30H0v-2.82l15-15L27.17 0h2.59l.24.24z" fill="currentColor"></path>
+              <path d="M30 27.18v2.7l-.12.12h-2.7L0 2.82V.12L.12 0h2.7L30 27.18z" fill="currentColor"></path>
+            </svg></span></span></button>
+    </header>
+    <div class="flex items-center relative home-hero__inner my-auto z-20 pointer-events-none">
+      <div class="transform-center-y mr-10 hero__social pointer-events-auto">
+        <div class="flex flex-col items-center p-4">
+          <div class="hover-grow my-3"> <a href="https://www.facebook.com/tekacademy/" target="_blank"
+              aria-label="Go to TEK facebook" rel="noopener noreferrer" class="hero__social-icon text-white"
+              style="opacity: 1; transform: translateY(0px) translateZ(0px);"><span class="inline-svg"
+                style="padding-top:100%">Socials</span></a> </div>
+          <div class="hover-grow my-3"> <a href="https://www.youtube.com/user/Tekkickboxing/featured" target="_blank"
+              aria-label="Go to TEK youtube" rel="noopener noreferrer" class="hero__social-icon text-white"
+              style="opacity: 1; transform: translateY(0px) translateZ(0px);"><span class="inline-svg"
+                style="padding-top:100%">F</span></a> </div>
+          <div class="hover-grow my-3"> <a href="https://www.instagram.com/tekkickboxing/?hl=en" target="_blank"
+              aria-label="Go to TEK instagram" rel="noopener noreferrer" class="hero__social-icon text-white"
+              style="opacity: 1; transform: translateY(0px) translateZ(0px);"><span class="inline-svg"
+                style="padding-top:100%">F</span></a> </div>
+          <div class="hover-grow my-3"> <a href="https://twitter.com/Tekkickboxing" target="_blank"
+              aria-label="Go to TEK twitter" rel="noopener noreferrer" class="hero__social-icon text-white"
+              style="opacity: 1; transform: translateY(0px) translateZ(0px);"><span class="inline-svg"
+                style="padding-top:100%">F</span></a> </div>
+        </div>
+      </div>
+      <div class="container hero__title">
+        <div class="mb-6 xl:mb-0">
+          <h1 class="text-white uppercase heading-xl font-black home-hero__heading ready words lines splitting animate"
+            data-animate="slide-up" style="--word-total: 4; --line-total: 2;"><span class="stroked inline-block ready"
+              style="opacity: 1; transform: translateY(0px) translateZ(0px);"><span class="word-wrapper"><span
+                  class="word" data-word="Together"
+                  style="--word-index: 0; --line-index: 0;">ghana's</span></span></span><br><span
+              class="filled inline-block ready" style="opacity: 1; transform: translateY(0px) translateZ(0px);"> <span
+                class="word-wrapper"><span class="word" data-word="We"
+                  style="--word-index: 1; --line-index: 1;"></span></span><span class="whitespace"> </span><span
+                class="word-wrapper"><span class="word" data-word="are"
+                  style="--word-index: 2; --line-index: 1;">football</span></span><span class="whitespace"> </span><span
+                class="word-wrapper"><span class="word" data-word="stronger"
+                  style="--word-index: 3; --line-index: 1;">expo</span></span> </span></h1>
+        </div>
+        <div class="block xl:hidden" data-animate="fade-up" data-delay="50" style="transition-delay: 50ms;"> <button
+            class="home-hero__modal-open" aria-label="Play video"><span class="inline-svg" style="padding-top:100%"><svg
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+                <circle cx="200" cy="200" r="198.5" fill="#fff" fill-opacity="0.8"></circle>
+                <path fill="#eaeaea"
+                  d="M200 3a197.053 197.053 0 0 1 76.68 378.52A197.052 197.052 0 0 1 123.32 18.48 195.758 195.758 0 0 1 200 3m0-3C89.543 0 0 89.543 0 200s89.543 200 200 200 200-89.543 200-200S310.457 0 200 0z">
+                </path>
+                <g fill="#201e6b">
+                  <path
+                    d="M97.783 158h21.539c13.948 0 20.865 7.379 20.865 22.257v5.131c0 14.71-5.552 23.59-21.488 23.59h-4.74V242H97.783zm16.176 37.887h2.617c6.131 0 7.428-3.433 7.428-10.429v-5.8c0-5.43-1.273-8.931-6.655-8.931h-3.39zM156.065 158h16.177v69.864h20.308L191.108 242h-35.043zM221.535 222.009L219.467 242H203l11.877-84h24.089l12.16 84h-16.811L232 222.009zm9.095-14.249c-1.194-10.748-2.867-27.1-3.654-35.141h-.636c-.29 5.855-2.283 24.754-3.4 35.141zM270.6 242v-26.9a18.041 18.041 0 0 0-.591-4.347L255.249 158h17.6c2.263 12.113 4.9 26.031 5.941 36.615h.524c1.364-10.05 4.056-24.275 6.243-36.615h16.661l-15.1 54.1a14.976 14.976 0 0 0-.385 3.62V242z">
+                  </path>
+                </g>
+              </svg></span></button> </div>
       </div>
     </div>
-  </nav>
-
-  <!-- NAVBAR END -->
-
-  <!-- HERO SECTION START -->
-  <section class="hero">
-    
-    <div class=" content py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-      <h1 class=" mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-4xl lg:text-5xl"
-        style="text-shadow:3px 3px 10px #000, 1px 1px 100px #000;">
-        Elevating the Game, Embracing the Culture
-      </h1>
-      <p class="mb-8 text-lg font-normal text-gray-200 lg:text-xl sm:px-16 xl:px-48"
-        style="text-shadow:3px 3px 10px #000, 1px 1px 100px #000;">
-        Immerse yourself in the heartbeat of African football at the African Football Expo – where skill meets culture on the pitch of celebration.
-      </p>
-      <div class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4"
-        >
-        <a href="#"  style="box-shadow:1px 1px 10px #000, 1px 1px 100px #000;"
-          class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center bg-white text-gray-900 rounded-lg border border-white hover:bg-transparent hover:text-white  focus:ring-4 focus:ring-gray-100">
-          <svg class="mr-2 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
-          </svg>
-          Explore!
-        </a>
-      </div>
-    </div>
+    <figure class="text-white relative z-20 hide-ie11" style="margin-bottom: -2px"> <img
+        src="/assets/images/home-hero.webp"> </figure>
+    <!-- <div class="hero__video-area absolute top-0 pointer-events-none xl:pointer-events-auto"></div> -->
+    <!-- <div class="hero__video z-10 overflow-hidden hidden xl:block pointer-events-none"
+      data-url="https://vimeo.com/819818987/215908f5f5" data-vimeo-initialized="true"> <iframe
+        src="https://player.vimeo.com/video/819818987?h=215908f5f5&amp;autopause=0&amp;loop=1&amp;background=1&amp;app_id=122963"
+        width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
+        title="Team Elite Kickboxing 2023" data-ready="true" style="height: 864px; width: 1536px;"></iframe></div> -->
+    <video data-object-fit="cover" class="hero__snippet object-cover pointer-events-none absolute z-0" width="100%"
+      height="100%" poster="https://teamelitekickboxing.org/wp-content/uploads/2019/08/Home-Poster.jpg" playsinline=""
+      autoplay="" muted="" loop="" preload="">
+      <source src="/assets/videos/hero_section.mp4"
+        type="video/webm">
+      <source src="/assets/videos/hero_section.mp4" type="video/mp4">
+    </video> <img data-src="https://teamelitekickboxing.org/wp-content/uploads/2019/08/Home-Poster.jpg" class="hidden">
   </section>
 
-  <!-- HERO SECTION END -->
-
   <section class="bg-white pb-20">
-    
+
     <div class="gallery-container">
       <h1 class="afe-gallery-heading" style="padding-top: 40px;">SPONSORS</h1>
       <div class="slides">
-        <div class="sponsor"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s" alt="bata"></div>
-        <div class="sponsor"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s" alt="bata"></div>
-        <div class="sponsor"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s" alt="bata"></div>
+        <div class="sponsor"><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s"
+            alt="bata"></div>
+        <div class="sponsor"><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s"
+            alt="bata"></div>
+        <div class="sponsor"><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQcnUGREOGB_TSbvR3bIUfJMjOAvrHG1ppUulxQwiqSA&s"
+            alt="bata"></div>
       </div>
     </div>
     <!-- or ul.my-slider > li -->
@@ -112,97 +164,127 @@
     <h1 class="afe-gallery-heading">EVENTS</h1>
     <div class="card bg-gray-800 card sm:flex md:flex">
       <div class="sm:flex-shrink-0 md:flex-shrink-0">
-        <img class="imagine w-full sm:w-56 md:w-56 lg:w-56" src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80" alt="Woman paying for a purchase">
+        <img class="imagine w-full sm:w-56 md:w-56 lg:w-56"
+          src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80"
+          alt="Woman paying for a purchase">
       </div>
       <div class="righty ml-3 md:mt-0 md:ml-6 sm:ml-3">
         <div class="grid grid-cols-2 gap-4">
-      <div> 
-        <div class="text-gray-100 mt-2 mb-4 uppercase tracking-wide text-lg text-600 font-bold cardheading cardtitle">Event Title</div>
-        <div class="text-gray-100 mb-4 uppercase tracking-wide text-lg text-600 font-bold cardheading"><i class="material-icons">
-    schedule
-    </i><small class="text-gray-200 mb-1 uppercase tracking-wide text-400 cardheading"> 7:00pm - 10:00pm</small></div>
-        
+          <div>
+            <div
+              class="text-gray-100 mt-2 mb-4 uppercase tracking-wide text-lg text-600 font-bold cardheading cardtitle">
+              Event Title</div>
+            <div class="text-gray-100 mb-4 uppercase tracking-wide text-lg text-600 font-bold cardheading"><i
+                class="material-icons">
+                schedule
+              </i><small class="text-gray-200 mb-1 uppercase tracking-wide text-400 cardheading"> 7:00pm -
+                10:00pm</small></div>
+
           </div>
-      <!-- ... -->
-       <div class="lefting">
-       <div class="date-ribbon border-2 border-gray-200 mr-4">
-                <h2 class="text-gray-800 tracking-wide text-lg text-600 font-bold">FEB</h2>
-                <h1 class="text-gray-800 tracking-wide text-xl text-600 font-bold">26</h1>
-    
+          <!-- ... -->
+          <div class="lefting">
+            <div class="date-ribbon border-2 border-gray-200 mr-4">
+              <h2 class="text-gray-800 tracking-wide text-lg text-600 font-bold">FEB</h2>
+              <h1 class="text-gray-800 tracking-wide text-xl text-600 font-bold">26</h1>
+
+            </div>
+          </div>
         </div>
-         </div>
-    </div>
-        
-        <div class="block mt-1 mr-6 text-lg md:w-3/4 lg:w-3/4 leading-tight font-semibold text-gray-200 hover:underline">A Subtitle for the event here</div>
-        <p class="mb-2 mt-2 mr-6 text-gray-300 md:w-3/4 lg:w-3/4 ">Here is a description for the even and a bunch of information about that event.</p>
-        <div class="lefting h-16 mb-2"> 
-              <a class="tickets bg-transparent uppercase  hover:bg-red-500 text-gray-100 font-semibold hover:text-black py-2 px-4 border-2 border-red-500 hover:border-transparent mb-2 mr-4">
-          Tickets
-        </a>
+
+        <div
+          class="block mt-1 mr-6 text-lg md:w-3/4 lg:w-3/4 leading-tight font-semibold text-gray-200 hover:underline">A
+          Subtitle for the event here</div>
+        <p class="mb-2 mt-2 mr-6 text-gray-300 md:w-3/4 lg:w-3/4 ">Here is a description for the even and a bunch of
+          information about that event.</p>
+        <div class="lefting h-16 mb-2">
+          <a
+            class="tickets bg-transparent uppercase  hover:bg-red-500 text-gray-100 font-semibold hover:text-black py-2 px-4 border-2 border-red-500 hover:border-transparent mb-2 mr-4">
+            Tickets
+          </a>
         </div>
       </div>
     </div>
     <div class="card bg-gray-800 card sm:flex md:flex">
       <div class="sm:flex-shrink-0 md:flex-shrink-0">
-        <img class="imagine w-full sm:w-56 md:w-56 lg:w-56" src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80" alt="Woman paying for a purchase">
+        <img class="imagine w-full sm:w-56 md:w-56 lg:w-56"
+          src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80"
+          alt="Woman paying for a purchase">
       </div>
       <div class="righty ml-3 md:mt-0 md:ml-6 sm:ml-3">
         <div class="grid grid-cols-2 gap-4">
-      <div> 
-        <div class="text-gray-100 mt-2 mb-4 uppercase tracking-wide text-lg text-600 font-bold cardheading cardtitle">Event Title</div>
-        <div class="text-gray-100 mb-4 uppercase tracking-wide text-lg text-600 font-bold cardheading"><i class="material-icons">
-    schedule
-    </i><small class="text-gray-200 mb-1 uppercase tracking-wide text-400 cardheading"> 7:00pm - 10:00pm</small></div>
-        
+          <div>
+            <div
+              class="text-gray-100 mt-2 mb-4 uppercase tracking-wide text-lg text-600 font-bold cardheading cardtitle">
+              Event Title</div>
+            <div class="text-gray-100 mb-4 uppercase tracking-wide text-lg text-600 font-bold cardheading"><i
+                class="material-icons">
+                schedule
+              </i><small class="text-gray-200 mb-1 uppercase tracking-wide text-400 cardheading"> 7:00pm -
+                10:00pm</small></div>
+
           </div>
-      <!-- ... -->
-       <div class="lefting">
-       <div class="date-ribbon border-2 border-gray-200 mr-4">
-                <h2 class="text-gray-800 tracking-wide text-lg text-600 font-bold">FEB</h2>
-                <h1 class="text-gray-800 tracking-wide text-xl text-600 font-bold">26</h1>
-    
+          <!-- ... -->
+          <div class="lefting">
+            <div class="date-ribbon border-2 border-gray-200 mr-4">
+              <h2 class="text-gray-800 tracking-wide text-lg text-600 font-bold">FEB</h2>
+              <h1 class="text-gray-800 tracking-wide text-xl text-600 font-bold">26</h1>
+
+            </div>
+          </div>
         </div>
-         </div>
-    </div>
-        
-        <div class="block mt-1 mr-6 text-lg md:w-3/4 lg:w-3/4 leading-tight font-semibold text-gray-200 hover:underline">A Subtitle for the event here</div>
-        <p class="mb-2 mt-2 mr-6 text-gray-300 md:w-3/4 lg:w-3/4 ">Here is a description for the even and a bunch of information about that event.</p>
-        <div class="lefting h-16 mb-2"> 
-              <a class="tickets bg-transparent uppercase  hover:bg-red-500 text-gray-100 font-semibold hover:text-black py-2 px-4 border-2 border-red-500 hover:border-transparent mb-2 mr-4">
-          Tickets
-        </a>
+
+        <div
+          class="block mt-1 mr-6 text-lg md:w-3/4 lg:w-3/4 leading-tight font-semibold text-gray-200 hover:underline">A
+          Subtitle for the event here</div>
+        <p class="mb-2 mt-2 mr-6 text-gray-300 md:w-3/4 lg:w-3/4 ">Here is a description for the even and a bunch of
+          information about that event.</p>
+        <div class="lefting h-16 mb-2">
+          <a
+            class="tickets bg-transparent uppercase  hover:bg-red-500 text-gray-100 font-semibold hover:text-black py-2 px-4 border-2 border-red-500 hover:border-transparent mb-2 mr-4">
+            Tickets
+          </a>
         </div>
       </div>
     </div>
     <div class="card bg-gray-800 card sm:flex md:flex">
       <div class="sm:flex-shrink-0 md:flex-shrink-0">
-        <img class="imagine w-full sm:w-56 md:w-56 lg:w-56" src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80" alt="Woman paying for a purchase">
+        <img class="imagine w-full sm:w-56 md:w-56 lg:w-56"
+          src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80"
+          alt="Woman paying for a purchase">
       </div>
       <div class="righty ml-3 md:mt-0 md:ml-6 sm:ml-3">
         <div class="grid grid-cols-2 gap-4">
-      <div> 
-        <div class="text-gray-100 mt-2 mb-4 uppercase tracking-wide text-lg text-600 font-bold cardheading cardtitle">Event Title</div>
-        <div class="text-gray-100 mb-4 uppercase tracking-wide text-lg text-600 font-bold cardheading"><i class="material-icons">
-    schedule
-    </i><small class="text-gray-200 mb-1 uppercase tracking-wide text-400 cardheading"> 7:00pm - 10:00pm</small></div>
-        
+          <div>
+            <div
+              class="text-gray-100 mt-2 mb-4 uppercase tracking-wide text-lg text-600 font-bold cardheading cardtitle">
+              Event Title</div>
+            <div class="text-gray-100 mb-4 uppercase tracking-wide text-lg text-600 font-bold cardheading"><i
+                class="material-icons">
+                schedule
+              </i><small class="text-gray-200 mb-1 uppercase tracking-wide text-400 cardheading"> 7:00pm -
+                10:00pm</small></div>
+
           </div>
-      <!-- ... -->
-       <div class="lefting">
-       <div class="date-ribbon border-2 border-gray-200 mr-4">
-                <h2 class="text-gray-800 tracking-wide text-lg text-600 font-bold">FEB</h2>
-                <h1 class="text-gray-800 tracking-wide text-xl text-600 font-bold">26</h1>
-    
+          <!-- ... -->
+          <div class="lefting">
+            <div class="date-ribbon border-2 border-gray-200 mr-4">
+              <h2 class="text-gray-800 tracking-wide text-lg text-600 font-bold">FEB</h2>
+              <h1 class="text-gray-800 tracking-wide text-xl text-600 font-bold">26</h1>
+
+            </div>
+          </div>
         </div>
-         </div>
-    </div>
-        
-        <div class="block mt-1 mr-6 text-lg md:w-3/4 lg:w-3/4 leading-tight font-semibold text-gray-200 hover:underline">A Subtitle for the event here</div>
-        <p class="mb-2 mt-2 mr-6 text-gray-300 md:w-3/4 lg:w-3/4 ">Here is a description for the even and a bunch of information about that event.</p>
-        <div class="lefting h-16 mb-2"> 
-              <a class="tickets bg-transparent uppercase  hover:bg-red-500 text-gray-100 font-semibold hover:text-black py-2 px-4 border-2 border-red-500 hover:border-transparent mb-2 mr-4">
-          Tickets
-        </a>
+
+        <div
+          class="block mt-1 mr-6 text-lg md:w-3/4 lg:w-3/4 leading-tight font-semibold text-gray-200 hover:underline">A
+          Subtitle for the event here</div>
+        <p class="mb-2 mt-2 mr-6 text-gray-300 md:w-3/4 lg:w-3/4 ">Here is a description for the even and a bunch of
+          information about that event.</p>
+        <div class="lefting h-16 mb-2">
+          <a
+            class="tickets bg-transparent uppercase  hover:bg-red-500 text-gray-100 font-semibold hover:text-black py-2 px-4 border-2 border-red-500 hover:border-transparent mb-2 mr-4">
+            Tickets
+          </a>
         </div>
       </div>
     </div>
@@ -238,41 +320,58 @@
     </div>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+<script>
+  const hamburger = document.querySelector('.hamburger-menu');
+  const menuSpan = document.querySelector('.menu-span');
+  const menuBox = document.querySelector('.menu__box');
+  hamburger.addEventListener('click', () => {
+    menuBox.classList.toggle('right-0');
+    // menuSpan.setProperty('--bg-color', 'white');
+    // menuSpan.menuSpanAfter.setProperty('background-color', "'black'");
+    // menuSpan.menuSpanBefore.setProperty('background-color', "'black'");
+  });
+  // hamburger.addEventListener('click', () => {
+  //   menuBox.classList.toggle('right-0');
+  //   menuSpan.style.backgroundColor = menuSpan.style.backgroundColor == 'white' ? 'black' : 'white';
+  //   menuSpan.menuSpanAfter.setProperty('background-color', "'black'");
+  //   menuSpan.menuSpanBefore.setProperty('background-color', "'black'");
+  // });
+</script>
   <script>
     const slideGallery = document.querySelector('.slides');
-const slides = slideGallery.querySelectorAll('div');
-const thumbnailContainer = document.querySelector('.thumbnails');
-const slideCount = slides.length;
-const slideWidth = 540;
+    const slides = slideGallery.querySelectorAll('div');
+    const thumbnailContainer = document.querySelector('.thumbnails');
+    const slideCount = slides.length;
+    const slideWidth = 540;
 
-const highlightThumbnail = () => {
-  thumbnailContainer
-    .querySelectorAll('div.highlighted')
-    .forEach(el => el.classList.remove('highlighted'));
-  const index = Math.floor(slideGallery.scrollLeft / slideWidth);
-  thumbnailContainer
-    .querySelector(`div[data-id="${index}"]`)
-    .classList.add('highlighted');
-};
+    const highlightThumbnail = () => {
+      thumbnailContainer
+        .querySelectorAll('div.highlighted')
+        .forEach(el => el.classList.remove('highlighted'));
+      const index = Math.floor(slideGallery.scrollLeft / slideWidth);
+      thumbnailContainer
+        .querySelector(`div[data-id="${index}"]`)
+        .classList.add('highlighted');
+    };
 
-const scrollToElement = el => {
-  const index = parseInt(el.dataset.id, 10);
-  slideGallery.scrollTo(index * slideWidth, 0);
-};
+    const scrollToElement = el => {
+      const index = parseInt(el.dataset.id, 10);
+      slideGallery.scrollTo(index * slideWidth, 0);
+    };
 
-thumbnailContainer.innerHTML += [...slides]
-  .map((slide, i) => `<div data-id="${i}"></div>`)
-  .join('');
+    thumbnailContainer.innerHTML += [...slides]
+      .map((slide, i) => `<div data-id="${i}"></div>`)
+      .join('');
 
-thumbnailContainer.querySelectorAll('div').forEach(el => {
-  el.addEventListener('click', () => scrollToElement(el));
-});
+    thumbnailContainer.querySelectorAll('div').forEach(el => {
+      el.addEventListener('click', () => scrollToElement(el));
+    });
 
-slideGallery.addEventListener('scroll', e => highlightThumbnail());
+    slideGallery.addEventListener('scroll', e => highlightThumbnail());
 
-highlightThumbnail();
+    highlightThumbnail();
   </script>
-<!-- NOTE: prior to v2.2.1 tiny-slider.js need to be in <body> -->
+  <!-- NOTE: prior to v2.2.1 tiny-slider.js need to be in <body> -->
   <!-- FOOTER END -->
 </body>
 
